@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tradiciones Mexicanas - Día de Muertos</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fff7e6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #e85a4f;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        h1, h2 {
+            font-family: "Georgia", serif;
+        }
+
+        main {
+            padding: 40px 10%;
+        }
+
+        section {
+            margin-bottom: 60px;
+        }
+
+        .bloque {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .bloque img {
+            flex: 1 1 350px;
+            max-width: 450px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+
+        .bloque img:hover {
+            transform: scale(1.05);
+        }
+
+        .texto {
+            flex: 1 1 400px;
+            text-align: justify;
+            line-height: 1.6em;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding: 20px;
+            }
+
+            .bloque {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .texto {
+                text-align: justify;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1> Día de Muertos </h1>
+    </header>
+
+    <main>
+
+        <section id="dia-de-muertos">
+            <h2>El Día de Muertos</h2>
+            
+            <div class="bloque">
+                <div class="texto">
+                    <p>
+                        El <strong>Día de Muertos</strong> es una de las tradiciones más emblemáticas de México y ha sido reconocida por la <strong>UNESCO</strong> como Patrimonio Cultural Inmaterial de la Humanidad. 
+                        Se celebra el <strong>1 y 2 de noviembre</strong>, coincidiendo con las festividades católicas de Todos los Santos y los Fieles Difuntos.
+                    </p>
+                    <p>
+                        Durante estos días, los hogares mexicanos se llenan de color y significado con las <em>ofrendas</em> o <em>altares</em>, donde se colocan fotografías, veladoras, flores de cempasúchil, pan de muerto, calaveritas de azúcar y los platillos favoritos de los seres queridos que ya partieron.
+                    </p>
+                    <p>
+                        Más allá de ser una fecha de tristeza, el Día de Muertos es una <strong>celebración de la vida</strong>, del ciclo natural de la existencia, y una oportunidad para mantener viva la memoria de aquellos que amamos. 
+                        En pueblos y ciudades, se realizan desfiles, concursos de altares y vistosos tapetes de aserrín.
+                    </p>
+                </div>
+
+                <img src="images.jpg">
+            </div>
+        </section>
+
+        <section id="catrina">
+            <h2>Origen de la Catrina</h2>
+
+            <div class="bloque">
+
+                <img src="catrina.jpg">
+                
+                <div class="texto">
+                    <p>
+                        La <strong>Catrina</strong> es sin duda el personaje más famoso del Día de Muertos. Su historia se remonta a principios del siglo XX, cuando el grabador <strong>José Guadalupe Posada</strong> creó la famosa ilustración llamada <em>“La Calavera Garbancera”</em>.
+                        En ella, se representaba una calavera vestida con sombrero elegante, en tono de burla hacia las personas que renegaban de su origen indígena.
+                    </p>
+                    <p>
+                        Años más tarde, el muralista <strong>Diego Rivera</strong> la retomó y le dio el nombre con el que hoy la conocemos: <strong>La Catrina</strong>. En su obra <em>“Sueño de una tarde dominical en la Alameda Central”</em>, Rivera la pintó con un vestido elegante, acompañando a personajes de la historia mexicana.
+                    </p>
+                    <p>
+                        Hoy, la Catrina simboliza la <strong>igualdad ante la muerte</strong> y la belleza de aceptar nuestro destino con una sonrisa. 
+                        Cada año, miles de personas se maquillan y se visten como ella para rendir homenaje a esta icónica figura de la cultura mexicana.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
