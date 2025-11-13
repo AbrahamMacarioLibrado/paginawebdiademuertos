@@ -66,6 +66,102 @@
             font-size: 0.9em;
         }
 
+        /* Estilos del formulario */
+        .formulario-seccion {
+            background-color: #f9f0e6;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-top: 40px;
+        }
+
+        .formulario-seccion h2 {
+            color: #e85a4f;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .campo-formulario {
+            margin-bottom: 20px;
+        }
+
+        .campo-formulario label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #5c3a21;
+        }
+
+        .campo-formulario input[type="text"],
+        .campo-formulario input[type="email"],
+        .campo-formulario textarea,
+        .campo-formulario select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #d9b38c;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #fffdf9;
+            box-sizing: border-box;
+        }
+
+        .campo-formulario textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .calificacion {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .opcion-calificacion {
+            text-align: center;
+            flex: 1;
+        }
+
+        .opcion-calificacion input {
+            margin-bottom: 5px;
+        }
+
+        .boton-enviar {
+            background-color: #e85a4f;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            transition: background-color 0.3s;
+        }
+
+        .boton-enviar:hover {
+            background-color: #d44a3f;
+        }
+
+        .mensaje-exito {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        .mensaje-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+
         @media (max-width: 768px) {
             main {
                 padding: 20px;
@@ -79,6 +175,11 @@
             .texto {
                 text-align: justify;
             }
+
+            .calificacion {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
     </style>
 </head>
@@ -88,7 +189,6 @@
     </header>
 
     <main>
-
         <section id="dia-de-muertos">
             <h2>El Día de Muertos</h2>
             
@@ -107,7 +207,7 @@
                     </p>
                 </div>
 
-                <img src="images.jpg">
+                <img src="images.jpg" alt="Altar de Día de Muertos">
             </div>
         </section>
 
@@ -116,15 +216,15 @@
 
             <div class="bloque">
 
-                <img src="catrina.jpg">
+                <img src="catrina.jpg" alt="La Catrina">
                 
                 <div class="texto">
                     <p>
-                        La <strong>Catrina</strong> es sin duda el personaje más famoso del Día de Muertos. Su historia se remonta a principios del siglo XX, cuando el grabador <strong>José Guadalupe Posada</strong> creó la famosa ilustración llamada <em>“La Calavera Garbancera”</em>.
+                        La <strong>Catrina</strong> es sin duda el personaje más famoso del Día de Muertos. Su historia se remonta a principios del siglo XX, cuando el grabador <strong>José Guadalupe Posada</strong> creó la famosa ilustración llamada <em>"La Calavera Garbancera"</em>.
                         En ella, se representaba una calavera vestida con sombrero elegante, en tono de burla hacia las personas que renegaban de su origen indígena.
                     </p>
                     <p>
-                        Años más tarde, el muralista <strong>Diego Rivera</strong> la retomó y le dio el nombre con el que hoy la conocemos: <strong>La Catrina</strong>. En su obra <em>“Sueño de una tarde dominical en la Alameda Central”</em>, Rivera la pintó con un vestido elegante, acompañando a personajes de la historia mexicana.
+                        Años más tarde, el muralista <strong>Diego Rivera</strong> la retomó y le dio el nombre con el que hoy la conocemos: <strong>La Catrina</strong>. En su obra <em>"Sueño de una tarde dominical en la Alameda Central"</em>, Rivera la pintó con un vestido elegante, acompañando a personajes de la historia mexicana.
                     </p>
                     <p>
                         Hoy, la Catrina simboliza la <strong>igualdad ante la muerte</strong> y la belleza de aceptar nuestro destino con una sonrisa. 
@@ -133,6 +233,116 @@
                 </div>
             </div>
         </section>
+
+        <!-- Sección del formulario de satisfacción -->
+        <section id="formulario-satisfaccion" class="formulario-seccion">
+            <h2>Formulario de Satisfacción</h2>
+            <p>Nos encantaría conocer tu opinión sobre nuestra página del Día de Muertos. Por favor, completa este formulario para ayudarnos a mejorar.</p>
+            
+            <form id="formulario-comentarios" action="enviar_comentarios.php" method="POST">
+                <div class="campo-formulario">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                
+                <div class="campo-formulario">
+                    <label for="email">Correo electrónico:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="campo-formulario">
+                    <label for="calificacion">¿Cómo calificarías esta página?</label>
+                    <div class="calificacion">
+                        <div class="opcion-calificacion">
+                            <input type="radio" id="excelente" name="calificacion" value="Excelente" required>
+                            <label for="excelente">Excelente</label>
+                        </div>
+                        <div class="opcion-calificacion">
+                            <input type="radio" id="buena" name="calificacion" value="Buena">
+                            <label for="buena">Buena</label>
+                        </div>
+                        <div class="opcion-calificacion">
+                            <input type="radio" id="regular" name="calificacion" value="Regular">
+                            <label for="regular">Regular</label>
+                        </div>
+                        <div class="opcion-calificacion">
+                            <input type="radio" id="mala" name="calificacion" value="Mala">
+                            <label for="mala">Mala</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="campo-formulario">
+                    <label for="comentarios">Comentarios:</label>
+                    <textarea id="comentarios" name="comentarios" placeholder="Escribe tus comentarios aquí..." required></textarea>
+                </div>
+                
+                <div class="campo-formulario">
+                    <label for="como-nos-conocio">¿Cómo nos conociste?</label>
+                    <select id="como-nos-conocio" name="como_nos_conocio">
+                        <option value="">Selecciona una opción</option>
+                        <option value="Redes sociales">Redes sociales</option>
+                        <option value="Búsqueda en internet">Búsqueda en internet</option>
+                        <option value="Recomendación">Recomendación</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="boton-enviar">Enviar Comentarios</button>
+            </form>
+            
+            <div id="mensaje-exito" class="mensaje-exito">
+                ¡Gracias por tus comentarios! Hemos recibido tu mensaje correctamente.
+            </div>
+            
+            <div id="mensaje-error" class="mensaje-error">
+                Ha ocurrido un error al enviar tu mensaje. Por favor, inténtalo de nuevo.
+            </div>
+        </section>
     </main>
+
+    <footer>
+        <p>© 2023 Tradiciones Mexicanas - Día de Muertos. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        document.getElementById('formulario-comentarios').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Mostrar mensaje de carga
+            const boton = document.querySelector('.boton-enviar');
+            const textoOriginal = boton.textContent;
+            boton.textContent = 'Enviando...';
+            boton.disabled = true;
+            
+            // Enviar formulario
+            const formData = new FormData(this);
+            
+            fetch('enviar_comentarios.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                if (data === 'success') {
+                    document.getElementById('mensaje-exito').style.display = 'block';
+                    document.getElementById('mensaje-error').style.display = 'none';
+                    document.getElementById('formulario-comentarios').reset();
+                } else {
+                    document.getElementById('mensaje-error').style.display = 'block';
+                    document.getElementById('mensaje-exito').style.display = 'none';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('mensaje-error').style.display = 'block';
+                document.getElementById('mensaje-exito').style.display = 'none';
+            })
+            .finally(() => {
+                boton.textContent = textoOriginal;
+                boton.disabled = false;
+            });
+        });
+    </script>
 </body>
 </html>
