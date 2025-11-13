@@ -1,6 +1,6 @@
 <?php
 // Configuración del correo
-$destinatario = "tu_correo@ejemplo.com"; // REEMPLAZA con tu correo
+$destinatario = "mala081206hmccbba7@soycecytem.mx"; // REEMPLAZA con tu correo
 $asunto = "Nuevo comentario - Página Día de Muertos";
 
 // Recibir datos del formulario
