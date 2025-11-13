@@ -207,7 +207,7 @@
                     </p>
                 </div>
 
-                <img src="images.jpg" alt="Altar de Día de Muertos">
+                <img src="https://images.unsplash.com/photo-1571994973051-383fd1c0f768?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Altar de Día de Muertos">
             </div>
         </section>
 
@@ -216,7 +216,7 @@
 
             <div class="bloque">
 
-                <img src="catrina.jpg" alt="La Catrina">
+                <img src="https://images.unsplash.com/photo-1571981767770-7d9dc1e42c2e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="La Catrina">
                 
                 <div class="texto">
                     <p>
@@ -239,7 +239,7 @@
             <h2>Formulario de Satisfacción</h2>
             <p>Nos encantaría conocer tu opinión sobre nuestra página del Día de Muertos. Por favor, completa este formulario para ayudarnos a mejorar.</p>
             
-            <form id="formulario-comentarios" action="enviar_comentarios.php" method="POST">
+            <form id="formulario-comentarios" action="mailto:tu_correo@ejemplo.com" method="POST" enctype="text/plain">
                 <div class="campo-formulario">
                     <label for="nombre">Nombre:</label>
                     <input type="text" id="nombre" name="nombre" required>
@@ -288,15 +288,13 @@
                     </select>
                 </div>
                 
+                <input type="hidden" name="subject" value="Comentario sobre página Día de Muertos">
+                
                 <button type="submit" class="boton-enviar">Enviar Comentarios</button>
             </form>
             
             <div id="mensaje-exito" class="mensaje-exito">
-                ¡Gracias por tus comentarios! Hemos recibido tu mensaje correctamente.
-            </div>
-            
-            <div id="mensaje-error" class="mensaje-error">
-                Ha ocurrido un error al enviar tu mensaje. Por favor, inténtalo de nuevo.
+                ¡Gracias por tus comentarios! Tu mensaje se abrirá en tu cliente de correo. Por favor, envía el mensaje para completar el proceso.
             </div>
         </section>
     </main>
@@ -307,41 +305,20 @@
 
     <script>
         document.getElementById('formulario-comentarios').addEventListener('submit', function(e) {
-            e.preventDefault();
+            // Validación básica antes de enviar
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const comentarios = document.getElementById('comentarios').value;
+            const calificacion = document.querySelector('input[name="calificacion"]:checked');
             
-            // Mostrar mensaje de carga
-            const boton = document.querySelector('.boton-enviar');
-            const textoOriginal = boton.textContent;
-            boton.textContent = 'Enviando...';
-            boton.disabled = true;
+            if (!nombre || !email || !comentarios || !calificacion) {
+                e.preventDefault();
+                alert('Por favor, completa todos los campos obligatorios.');
+                return;
+            }
             
-            // Enviar formulario
-            const formData = new FormData(this);
-            
-            fetch('enviar_comentarios.php', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.text())
-            .then(data => {
-                if (data === 'success') {
-                    document.getElementById('mensaje-exito').style.display = 'block';
-                    document.getElementById('mensaje-error').style.display = 'none';
-                    document.getElementById('formulario-comentarios').reset();
-                } else {
-                    document.getElementById('mensaje-error').style.display = 'block';
-                    document.getElementById('mensaje-exito').style.display = 'none';
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                document.getElementById('mensaje-error').style.display = 'block';
-                document.getElementById('mensaje-exito').style.display = 'none';
-            })
-            .finally(() => {
-                boton.textContent = textoOriginal;
-                boton.disabled = false;
-            });
+            // Mostrar mensaje informativo
+            document.getElementById('mensaje-exito').style.display = 'block';
         });
     </script>
 </body>
